@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Miles 2 Wisdom Counseling Services, LLC</title>
+<meta name="description" content="Guiding you from where you are to where you want to be. Counseling for individuals, couples, and families." />
+<meta property="og:title" content="Miles 2 Wisdom Counseling Services, LLC" />
+<meta property="og:description" content="Guiding you from where you are to where you want to be." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="Logo.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="theme-color" content="#A9C9FF">
+<link rel="preload" as="image" href="image1.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Lora:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --blue:#A9C9FF;
+  --beige:hsl(33,38%,94%);
+  --sage:#A7C4A0;
+  --charcoal:#333;
+  --ink:#1f1f1f;
+  --muted:#6b7280;
+  --white:#fff;
+  --maxw:1100px;
+  --radius:14px;
+  --shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html { scroll-behavior: smooth; }
+body {
+  color: var(--ink);
+  background: linear-gradient(180deg,var(--beige),#fff 45%);
+  font-family: Lato, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height: 1.6;
+}
+a { color: inherit; text-decoration: none; }
+a:focus { outline: 2px solid var(--blue); outline-offset: 2px; }
+.container { max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
+
+/* Header */
+header {
+  position: sticky; 
+  top: 0; 
+  z-index: 1000;
+  background: rgba(255,255,255,.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0,0,0,.05);
+  padding: 20px 40px;
+  transition: padding 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms cubic-bezier(.2,.9,.2,1);
+  will-change: padding, box-shadow;
+}
+
+header.shrink {
+  padding: 10px 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.nav { 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+}
+
+.brand { 
+  display: flex; 
+  align-items: center; 
+  gap: 12px; 
+}
+
+.logo {
+  width: 60px; 
+  height: 60px; 
+  border-radius: 50%;
+  object-fit: cover;
+  transform-origin: center;
+  transition: transform 260ms cubic-bezier(.2,.9,.2,1);
+  will-change: transform; 
+}
+
+header.shrink .logo {
+  transform: scale(0.85);
+}
+
+header.shrink .logo { transform: scale(0.85); }
+.brand h1 {
+  font-family: Lora, serif;
+  font-size: 1.3rem;
+  transition: font-size 0.3s ease;
+}
+header.shrink .brand h1 { font-size: 1.15rem; }
+.tagline { font-size: .8rem; color: var(--muted); }
+
+nav[aria-label="Main Navigation"] ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  transition: all 0.5s ease;
+}
+nav ul li {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+nav a {
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+nav a:hover, nav a:focus {
+  background: rgba(169,201,255,0.25);
+}
+
+.menu-btn {
+  display: none;
+  border: 0;
+  background: var(--charcoal);
+  color: #fff;
+  font-size: 1.5rem;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Page layout */
+main{max-width:var(--maxw);margin:0 auto;padding:40px 20px;}
+.page-title{font-family:Lora,serif;font-size:clamp(1.9rem,3.5vw,2.4rem);text-align:center;margin-bottom:12px;}
+.section-title{font-family:Lora,serif;font-size:clamp(1.4rem,2.2vw,1.8rem);text-align:center;margin:28px 0 18px;}
+
+/* Grid - consistent 4 columns on large screens */
+.grid{
+  display:grid;
+  gap:22px;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items:center;
+}
+@media (max-width:1024px){ .grid{ grid-template-columns: repeat(2,1fr); } }
+@media (max-width:600px){ .grid{ grid-template-columns: 1fr; } }
+
+.card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;text-align:center;width:220px;transition:transform .25s ease,box-shadow .25s ease;cursor:pointer;}
+.card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,.12);}
+.card img{width:160px;height:160px;object-fit:cover;border-radius:50%;margin-bottom:12px;}
+.card h3{font-family:Lora,serif;font-size:1rem;margin:6px 0 0;}
+
+/* CTA + footer */
+.cta-bar{background:linear-gradient(135deg,rgba(169,201,255,0.85),rgba(167,196,160,0.85));color:#0f172a;padding:40px 20px;}
+.btn{display:inline-block;background:var(--charcoal);color:#fff;padding:10px 16px;border-radius:12px;font-weight:700;text-decoration:none;}
+
+/* Footer */
+footer { background: #101418; color: #d1d5db; padding-top: 40px; }
+footer a { color: #e5e7eb; }
+.footgrid { display: grid; gap: 20px; grid-template-columns: 2fr 1fr 1fr; }
+.disclaimer { font-size: .85rem; color: #9ca3af; }
+.subtle { font-size: .9rem; color: #cbd5e1; }
+
+/* Mobile menu behavior - use transform/opacity transitions (keeps behavior consistent with index) */
+@media (max-width:980px) {
+  nav[aria-label="Main Navigation"] ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    max-height: 0;
+    overflow: hidden;
+    flex-direction: column;
+    transition: max-height 0.4s ease;
+  }
+
+  nav ul.open {
+    max-height: 500px; /* adjust if needed */
+  }
+
+  nav ul li {
+    padding: 12px 20px;
+    border-bottom: 1px solid rgba(0,0,0,.05);
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  nav ul.open li {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .menu-btn { display: block; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="index.html">
+  <img src="Logo.jpg" alt="Miles 2 Wisdom Logo" class="logo">
+  <div>
+    <h1>Miles 2 Wisdom Counseling</h1>
+    <div class="tagline">Guiding You from Where You Are to Where You Want to Be.</div>
+  </div>
+</a>
+    <nav aria-label="Main Navigation">
+      <button class="menu-btn" aria-expanded="false" aria-controls="menu">☰</button>
+      <ul id="menu" role="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="meet-the-team.html">Meet the Team</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="new-patient.html" class="btn">New Patient</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <h1 class="page-title">Meet the Team</h1>
+
+  <section aria-labelledby="supervisor">
+    <h2 id="supervisor" class="section-title">Counseling Supervisor</h2>
+    <div class="container" style="max-width:820px;margin:0 auto;">
+      <div class="grid" style="max-width:820px;margin:0 auto;">
+        <div class="card" onclick="location.href='team-files/marva-johnson.html'">
+          <img src="team-pics/Marva Johnson.jpg" alt="Marva Johnson">
+          <h3>Marva Johnson, LCMHC-S</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="interns">
+    <h2 id="interns" class="section-title">Interns</h2>
+    <div class="container">
+      <div class="grid">
+        <div class="card" onclick="location.href='team-files/bernard-cameron.html'">
+          <img src="team-pics/Bernard Cameron.jpg" alt="Bernard Cameron">
+          <h3>Bernard Cameron, MA</h3>
+        </div>
+        <div class="card" onclick="location.href='team-files/tonia-spear.html'">
+          <img src="team-pics/Tonia Spear.jpg" alt="Tonia Spear">
+          <h3>Tonia Spear, MA</h3>
+        </div>
+
+        <!-- 6 random placeholders (total interns = 8) -->
+        <div class="card" onclick="location.href='team-files/team-member.html'">
+          <img src="team-pics/random.jpg" alt="Random Intern 1">
+          <h3>Random Intern 1</h3>
+        </div>
+        <div class="card" onclick="location.href='team-files/team-member.html'">
+          <img src="team-pics/random.jpg" alt="Random Intern 2">
+          <h3>Random Intern 2</h3>
+        </div>
+        <div class="card" onclick="location.href='team-files/team-member.html'">
+          <img src="team-pics/random.jpg" alt="Random Intern 3">
+          <h3>Random Intern 3</h3>
+        </div>
+        <div class="card" onclick="location.href='team-files/team-member.html'">
+          <img src="team-pics/random.jpg" alt="Random Intern 4">
+          <h3>Random Intern 4</h3>
+        </div>
+        <div class="card" onclick="location.href='team-files/team-member.html'">
+          <img src="team-pics/random.jpg" alt="Random Intern 5">
+          <h3>Random Intern 5</h3>
+        </div>
+        <div class="card" onclick="location.href='team-files/team-member.html'">
+          <img src="team-pics/random.jpg" alt="Random Intern 6">
+          <h3>Random Intern 6</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="it">
+    <h2 id="it" class="section-title">IT Support</h2>
+    <div class="container" style="max-width:600px;margin:0 auto;">
+      <div class="grid" style="max-width:600px;margin:0 auto;">
+        <div class="card" onclick="location.href='team-files/it-support1.html'">
+          <img src="team-pics/random.jpg" alt="IT Support 1">
+          <h3>IT Support 1</h3>
+        </div>
+        <div class="card" onclick="location.href='team-files/it-support2.html'">
+          <img src="team-pics/random.jpg" alt="IT Support 2">
+          <h3>IT Support 2</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="cta-bar" aria-label="Call to action">
+  <div class="container" style="display:flex;gap:0;align-items:stretch;flex-wrap:wrap;">
+    <div style="flex:1;text-align:center;padding:20px;">
+      <h3>New Patients</h3>
+      <p>CALL US AT <strong>910.860.7008 EXT 102</strong> OR FILL OUT A NEW PATIENT FORM.</p>
+      <a href="team-files/new-patient.html" class="btn">New Patient Form</a>
+    </div>
+    <div style="width:1px;background:rgba(0,0,0,0.3);"></div>
+    <div style="flex:1;text-align:center;padding:20px;">
+      <h3>Join Us</h3>
+      <p>WE ARE ALWAYS LOOKING FOR INCREDIBLE PEOPLE TO JOIN OUR TEAM!</p>
+      <a href="team-files/apply-now.html" class="btn">Apply Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container footgrid">
+    <div>
+      <strong>Miles 2 Wisdom Counseling Services, LLC</strong>
+      <p class="disclaimer">Not a crisis service. Call 911 or 988 in emergencies.</p>
+    </div>
+    <div>
+      <strong>Navigate</strong>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+      </ul>
+    </div>
+    <div>
+      <strong>Connect</strong>
+      <ul>
+        <li><a href="https://www.facebook.com/Miles2Wisdom" target="_blank">Facebook</a></li>
+        <li><a href="#">LinkedIn</a></li>
+      </ul>
+    </div>
+    <div style="grid-column:1/-1;text-align:center;margin-top:30px;">
+      <img src="Logo.jpg" alt="Miles 2 Wisdom Logo" style="width:80px;opacity:0.8;">
+    </div>
+    <div class="subtle" style="grid-column:1/-1;text-align:center;margin-top:20px;">
+      © <span id="year"></span> Miles 2 Wisdom Counseling Services, LLC.
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile Menu (copied from index exactly)
+const menuBtn = document.querySelector('.menu-btn');
+const menu = document.querySelector('nav ul');
+const links = menu.querySelectorAll('li');
+
+menuBtn.addEventListener('click', () => {
+  const isOpen = menu.classList.toggle('open');
+  menuBtn.textContent = isOpen ? '✕' : '☰';
+  menuBtn.setAttribute('aria-expanded', isOpen);
+  links.forEach((li, i) => {
+    li.style.transitionDelay = isOpen ? `${i * 50}ms` : '0ms';
+    li.style.opacity = isOpen ? '1' : '0';
+    li.style.transform = isOpen ? 'translateX(0)' : 'translateX(-20px)';
+  });
+});
+
+// Shrink Header Smoothly (copied from index exactly)
+const header = document.querySelector('header');
+
+let lastKnownScrollY = 0;
+let ticking = false;
+
+// Hysteresis thresholds to prevent jitter
+const SHRINK_THRESHOLD = 70;  // scrollY >= this => add .shrink
+const EXPAND_THRESHOLD = 50;  // scrollY <= this => remove .shrink
+
+function updateHeader() {
+  const currentY = lastKnownScrollY;
+
+  if (currentY >= SHRINK_THRESHOLD && !header.classList.contains('shrink')) {
+    header.classList.add('shrink');
+  } else if (currentY <= EXPAND_THRESHOLD && header.classList.contains('shrink')) {
+    header.classList.remove('shrink');
+  }
+
+  ticking = false;
+}
+
+window.addEventListener('scroll', () => {
+  lastKnownScrollY = window.scrollY;
+
+  if (!ticking) {
+    window.requestAnimationFrame(updateHeader);
+    ticking = true;
+  }
+});
+
+// Footer year
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

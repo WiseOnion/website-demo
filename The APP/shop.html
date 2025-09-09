@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Shop — Miles 2 Wisdom</title>
+<meta name="description" content="Books, workbooks, and self-care products curated to support your healing journey." />
+<meta property="og:title" content="Miles 2 Wisdom Counseling Services, LLC" />
+<meta property="og:description" content="Guiding you from where you are to where you want to be." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="Logo.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="theme-color" content="#A9C9FF">
+
+<!-- Preload images -->
+<link rel="preload" as="image" href="Marriage-Ain't-A-Fairytale.JPG">
+<link rel="preload" as="image" href="Parenting-Workbook.jpg">
+<link rel="preload" as="image" href="Resilience-eGuide.jpg">
+<link rel="preload" as="image" href="Mindfulness-Cards.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Lora:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --blue:#A9C9FF;
+  --beige:hsl(33,38%,94%);
+  --sage:#A7C4A0;
+  --charcoal:#333;
+  --ink:#1f1f1f;
+  --muted:#6b7280;
+  --white:#fff;
+  --maxw:1100px;
+  --radius:14px;
+  --shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  color: var(--ink);
+  background: linear-gradient(180deg,var(--beige),#fff 45%);
+  font-family: Lato, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height: 1.6;
+}
+a { color: inherit; text-decoration: none; }
+a:focus { outline: 2px solid var(--blue); outline-offset: 2px; }
+.container { max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
+
+/* Header */
+header {
+  position: sticky; top: 0; z-index: 1000;
+  background: rgba(255,255,255,.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0,0,0,.05);
+  padding: 20px 40px;
+  transition: padding 0.3s ease, box-shadow 0.3s ease;
+}
+header.shrink { padding: 10px 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.nav { display: flex; align-items: center; justify-content: space-between; }
+.brand { display: flex; align-items: center; gap: 12px; }
+.logo { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; transform-origin: center; transition: transform 0.3s ease; }
+header.shrink .logo { transform: scale(0.85); }
+.brand h1 { font-family: Lora, serif; font-size: 1.3rem; font-weight:700; transition: font-size 0.3s ease; }
+header.shrink .brand h1 { font-size: 1.15rem; }
+.tagline { font-size: .8rem; color: var(--muted); }
+
+/* Navigation */
+nav[aria-label="Main Navigation"] ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  transition: all 0.5s ease;
+}
+nav li { transition: transform 0.3s ease, opacity 0.3s ease; }
+nav a { padding: 8px 10px; border-radius: 10px; font-weight: 600; display: flex; align-items: center; height: 40px; }
+nav a:hover, nav a:focus { background: rgba(169,201,255,0.25); }
+.menu-btn { display: none; border: 0; background: var(--charcoal); color: #fff; font-size: 1.5rem; padding: 8px 12px; border-radius: 8px; cursor: pointer; transition: all 0.3s ease; }
+
+/* Shop Hero */
+.hero { padding: 48px 0; }
+.hero .inner { max-width: var(--maxw); margin: 0 auto; padding: 0 20px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+h1.page { font-family:Lora, serif; font-size:2rem; margin:0 0 12px 0; }
+.lead { color:#374151; max-width:900px; margin-bottom:24px; }
+.featured-panel { background:#fff; padding:12px; border-radius:12px; box-shadow:var(--shadow); min-width:220px; text-align:right; }
+.featured-panel strong { display:block; }
+.featured-panel div { color:var(--muted); font-size:.95rem; margin-top:8px; }
+
+/* products */
+.products { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; max-width:var(--maxw); margin:0 auto; padding:20px; }
+.product { background:#fff; border-radius:var(--radius); box-shadow:var(--shadow); padding:18px; text-align:center; display:flex; flex-direction:column; }
+.product img { width:100%; height:180px; object-fit:cover; border-radius:12px; margin-bottom:12px; }
+.product h3 { font-family:Lora, serif; margin:0 0 8px 0; }
+.product p { color:#374151; margin:0 0 12px 0; }
+.actions { margin-top:auto; display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+.btn { display:inline-block; background:var(--charcoal); color:#fff; padding:10px 14px; border-radius:12px; font-weight:700; text-decoration:none; }
+.btn.alt { background: transparent; color: var(--charcoal); border:1px solid rgba(0,0,0,.08); padding:10px 12px; border-radius:12px; }
+
+/* Quick View Panel */
+.quick-view-panel {
+  position: fixed;
+  top: 0; right: -100%;
+  width: 100%; max-width: 450px;
+  height: 100%;
+  background: var(--white);
+  box-shadow: -4px 0 30px rgba(0,0,0,.2);
+  transition: right 0.4s ease;
+  z-index: 2000;
+  overflow-y: auto;
+  padding: 20px;
+}
+.quick-view-panel.open { right: 0; }
+.quick-view-img { width: 100%; border-radius: 12px; margin-bottom: 16px; }
+.quick-view-title { font-family: Lora, serif; font-size: 1.5rem; margin-bottom: 12px; }
+.quick-view-desc { color: #374151; line-height: 1.5; margin-bottom: 20px; }
+.close-btn { position: absolute; top: 15px; right: 15px; font-size: 2rem; border: none; background: none; cursor: pointer; color: #333; }
+
+/* CTA + footer */
+.cta-bar{background:linear-gradient(135deg,rgba(169,201,255,0.85),rgba(167,196,160,0.85));color:#0f172a;padding:40px 20px;margin-top:40px;}
+footer { background: #101418; color: #d1d5db; padding-top: 40px; text-align:center; }
+.footer-logo { width:80px; opacity:.8; margin-top:12px; }
+
+/* responsive */
+@media (max-width:980px) { 
+  nav[aria-label="Main Navigation"] ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    max-height: 0;
+    overflow: hidden;
+    flex-direction: column;
+    transition: max-height 0.4s ease;
+  }
+  
+  nav ul.open { max-height: 500px; }
+  
+  nav li {
+    padding: 12px 20px;
+    border-bottom: 1px solid rgba(0,0,0,.05);
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  
+  .menu-btn { display: block; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <img src="Logo.jpg" alt="Miles 2 Wisdom Logo" class="logo">
+      <div>
+        <h1>Miles 2 Wisdom Counseling</h1>
+        <div class="tagline">Guiding You from Where You Are to Where You Want to Be.</div>
+      </div>
+    </a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="menu">☰</button>
+    <nav aria-label="Main Navigation">
+      <ul id="menu" role="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="meet-the-team.html">Meet the Team</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="new-patient.html" class="btn">New Patient</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="inner">
+    <div>
+      <h1 class="page">Shop — Self‑help & Resources</h1>
+      <p class="lead">Books, workbooks, and self‑care resources curated to support your healing journey.</p>
+    </div>
+    <div class="featured-panel">
+      <strong>Featured</strong>
+      <div>Marriage Ain't A Fairytale — link below</div>
+    </div>
+  </div>
+</section>
+
+<main class="container">
+  <div class="products">
+    <div class="product">
+      <img src="Marriage-Ain't-A-Fairytale.JPG" alt="Marriage Ain't A Fairytale cover">
+      <h3>Marriage Ain't A Fairytale</h3>
+      <p>By: Marva Johnson — Practical, faith‑forward relationship guide.</p>
+      <div class="actions">
+        <a class="btn" href="https://www.amazon.com/Marriage-Aint-Fairytale-Marva-Johnson/dp/1545609314" target="_blank" rel="noopener">Buy</a>
+        <a class="btn alt quick-view-btn"
+           data-title="Marriage Ain't A Fairytale"
+           data-img="Marriage-Ain't-A-Fairytale.JPG"
+           data-desc="Most people don't marry expecting divorce, but many face that reality. Auntie Marva shares practical tools to build strong marriages, help struggling unions find resolution, and keep joy alive.">
+          Quick view
+        </a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="Parenting-Workbook.jpg" alt="Parenting Workbook">
+      <h3>Parenting Workbook</h3>
+      <p>Tools for family communication and interactive exercises.</p>
+      <div class="actions">
+        <a class="btn" href="#">Buy</a>
+        <a class="btn alt quick-view-btn"
+           data-title="Parenting Workbook"
+           data-img="Parenting-Workbook.jpg"
+           data-desc="A practical workbook with communication tools and exercises to strengthen family bonds.">
+          Quick view
+        </a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="Resilience-eGuide.jpg" alt="Resilience eGuide">
+      <h3>Resilience e‑Guide (PDF)</h3>
+      <p>Downloadable guide on building resilience in tough times.</p>
+      <div class="actions">
+        <a class="btn" href="#">Buy</a>
+        <a class="btn alt quick-view-btn"
+           data-title="Resilience e‑Guide (PDF)"
+           data-img="Resilience-eGuide.jpg"
+           data-desc="A concise, downloadable guide offering strategies to build resilience and bounce back stronger.">
+          Quick view
+        </a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="Mindfulness-Cards.jpg" alt="Mindfulness Cards">
+      <h3>Mindfulness Cards</h3>
+      <p>A deck of grounding prompts for daily use.</p>
+      <div class="actions">
+        <a class="btn" href="#">Buy</a>
+        <a class="btn alt quick-view-btn"
+           data-title="Mindfulness Cards"
+           data-img="Mindfulness-Cards.jpg"
+           data-desc="A beautifully designed set of cards to help you center and stay grounded throughout the day.">
+          Quick view
+        </a>
+      </div>
+    </div>
+        <!-- New example product 5 -->
+    <div class="product">
+      <img src="Example-Book-1.jpg" alt="Example Book 1">
+      <h3>Example Book 1</h3>
+      <p>Sample description for demonstration purposes.</p>
+      <div class="actions">
+        <a class="btn" href="#">Buy</a>
+        <a class="btn alt quick-view-btn"
+           data-title="Example Book 1"
+           data-img="Example-Book-1.jpg"
+           data-desc="This is a sample description for Example Book 1.">
+          Quick view
+        </a>
+      </div>
+    </div>
+
+    <!-- New example product 6 -->
+    <div class="product">
+      <img src="Example-Book-2.jpg" alt="Example Book 2">
+      <h3>Example Book 2</h3>
+      <p>Sample description for demonstration purposes.</p>
+      <div class="actions">
+        <a class="btn" href="#">Buy</a>
+        <a class="btn alt quick-view-btn"
+           data-title="Example Book 2"
+           data-img="Example-Book-2.jpg"
+           data-desc="This is a sample description for Example Book 2.">
+          Quick view
+        </a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Quick View Panel -->
+<div id="quick-view-panel" class="quick-view-panel">
+  <div class="quick-view-content">
+    <button class="close-btn">&times;</button>
+    <img src="" alt="" class="quick-view-img">
+    <h2 class="quick-view-title"></h2>
+    <p class="quick-view-desc"></p>
+    <a class="btn quick-view-buy" href="#" target="_blank">Buy</a>
+  </div>
+</div>
+
+<section class="cta-bar">
+  <div class="container" style="display:flex;gap:0;align-items:stretch;flex-wrap:wrap;">
+    <div style="flex:1;text-align:center;padding:20px;">
+      <h3>New Patients</h3>
+      <p>CALL US AT <strong>910.860.7008 EXT 102</strong> OR FILL OUT A NEW PATIENT FORM.</p>
+      <a href="new-patient.html" class="btn">New Patient Form</a>
+    </div>
+    <div style="width:1px;background:rgba(0,0,0,0.3);"></div>
+    <div style="flex:1;text-align:center;padding:20px;">
+      <h3>Join Us</h3>
+      <p>WE ARE ALWAYS LOOKING FOR INCREDIBLE PEOPLE TO JOIN OUR TEAM!</p>
+      <a href="apply-now.html" class="btn">Apply Now</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footgrid" style="display:grid;gap:20px;grid-template-columns:2fr 1fr 1fr;">
+    <div>
+      <strong>Miles 2 Wisdom Counseling Services, LLC</strong>
+      <p class="disclaimer" style="margin-top:6px;color:#9ca3af;">Not a crisis service. Call 911 or 988 in emergencies.</p>
+    </div>
+    <div>
+      <strong>Navigate</strong>
+      <ul style="list-style:none;padding-left:0;margin-top:8px;">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+      </ul>
+    </div>
+    <div>
+      <strong>Connect</strong>
+      <ul style="list-style:none;padding-left:0;margin-top:8px;">
+        <li><a href="https://www.facebook.com/Miles2Wisdom" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="#" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+    <div style="grid-column:1/-1;text-align:center;margin-top:30px;">
+      <img src="Logo.jpg" alt="Miles 2 Wisdom Logo" class="footer-logo">
+    </div>
+    <div class="subtle" style="grid-column:1/-1;text-align:center;margin-top:20px;">
+      © <span id="year"></span> Miles 2 Wisdom Counseling Services, LLC.
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile nav toggle
+const menuBtn = document.querySelector('.menu-btn');
+const menu = document.querySelector('nav ul');
+const menuItems = menu.querySelectorAll('li');
+menuBtn.addEventListener('click', () => {
+  const open = menu.classList.toggle('open');
+  menuBtn.textContent = open ? '✕' : '☰';
+  menuBtn.setAttribute('aria-expanded', open);
+  menuItems.forEach((li, idx) => {
+    li.style.transitionDelay = open ? `${idx*50}ms` : '0ms';
+    li.style.opacity = open ? '1' : '0';
+    li.style.transform = open ? 'translateX(0)' : 'translateX(-20px)';
+  });
+});
+
+// Shrink header on scroll
+const header = document.querySelector('header');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('shrink', window.scrollY > 55);
+});
+
+// Year auto-update
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Quick View logic
+const quickButtons = document.querySelectorAll('.quick-view-btn');
+const panel = document.getElementById('quick-view-panel');
+const imgEl = panel.querySelector('.quick-view-img');
+const titleEl = panel.querySelector('.quick-view-title');
+const descEl = panel.querySelector('.quick-view-desc');
+const buyEl = panel.querySelector('.quick-view-buy');
+const closeBtn = panel.querySelector('.close-btn');
+
+const buyLinks = {
+  "Marriage Ain't A Fairytale": "https://www.amazon.com/Marriage-Aint-Fairytale-Marva-Johnson/dp/1545609314"
+};
+
+quickButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    imgEl.src = btn.dataset.img;
+    imgEl.alt = btn.dataset.title;
+    titleEl.textContent = btn.dataset.title;
+    descEl.textContent = btn.dataset.desc;
+    buyEl.href = buyLinks[btn.dataset.title] || "#";
+    panel.classList.add('open');
+  });
+});
+
+closeBtn.addEventListener('click', () => panel.classList.remove('open'));
+panel.addEventListener('click', e => { if(e.target === panel) panel.classList.remove('open'); });
+</script>
+
+</body>
+</html>

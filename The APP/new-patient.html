@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>New Patient — Miles 2 Wisdom Counseling Services, LLC</title>
+<meta name="description" content="New patient intake form for Miles 2 Wisdom Counseling Services." />
+<meta property="og:title" content="Miles 2 Wisdom Counseling Services, LLC" />
+<meta property="og:description" content="Guiding you from where you are to where you want to be." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="Logo.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="theme-color" content="#A9C9FF">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Lora:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* -------------------
+  Small UX / layout fixes
+  ------------------- */
+:root{
+  --blue:#A9C9FF;
+  --beige:hsl(33,38%,94%);
+  --sage:#A7C4A0;
+  --charcoal:#333;
+  --ink:#1f1f1f;
+  --muted:#6b7280;
+  --white:#fff;
+  --maxw:1100px;
+  --radius:14px;
+  --shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+* { box-sizing: border-box; margin:0; padding:0; }
+html { scroll-behavior: smooth; }
+body {
+  color: var(--ink);
+  background: linear-gradient(180deg,var(--beige),#fff 45%);
+  font-family: Lato, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height: 1.6;
+}
+a { color: inherit; text-decoration: none; }
+.container { max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
+
+/* === Header (copied exactly from your index structure/styles) === */
+header {
+  position: sticky; top: 0; z-index: 1000;
+  background: rgba(255,255,255,.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0,0,0,.05);
+  padding: 20px 40px;
+  transition: padding 0.3s ease, box-shadow 0.3s ease;
+}
+header.shrink { padding: 10px 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.nav { display: flex; align-items: center; justify-content: space-between; }
+.brand { display: flex; align-items: center; gap: 12px; }
+.logo {
+  width: 60px; height: 60px; border-radius: 50%;
+  object-fit: cover;
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+header.shrink .logo { transform: scale(0.85); }
+.brand h1 {
+  font-family: Lora, serif;
+  font-size: 1.3rem;
+  transition: font-size 0.3s ease;
+  font-weight:700;
+}
+header.shrink .brand h1 { font-size: 1.15rem; }
+.tagline { font-size: .8rem; color: var(--muted); }
+
+nav[aria-label="Main Navigation"] ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  transition: all 0.5s ease;
+}
+nav ul li {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+nav a {
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+nav a:hover, nav a:focus {
+  background: rgba(169,201,255,0.25);
+}
+
+.menu-btn {
+  display: none;
+  border: 0;
+  background: var(--charcoal);
+  color: #fff;
+  font-size: 1.5rem;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* === New-patient form styles === */
+main { padding: 48px 0; }
+.page-title { font-family: Lora, serif; font-size: 2rem; margin-bottom: 8px; }
+.lead { color: #374151; max-width:900px; margin-bottom: 18px; }
+
+.form-grid { display: grid; gap: 20px; grid-template-columns: 1fr 380px; align-items:start; }
+@media(max-width:980px){ .form-grid { grid-template-columns: 1fr; } }
+
+.card {
+  background:#fff; border-radius:var(--radius); box-shadow:var(--shadow);
+  padding:18px;
+}
+
+.field { display:flex; flex-direction:column; margin-bottom:12px; }
+label { font-weight:600; margin-bottom:6px; color:#0f172a; }
+input[type="text"], input[type="tel"], input[type="email"], input[type="date"], select, textarea {
+  padding:10px 12px; border-radius:10px; border:1px solid rgba(0,0,0,.08); background:#fff; font-size:0.95rem;
+  width:100%;
+  box-sizing:border-box;
+}
+textarea { min-height:100px; resize:vertical; }
+
+.small { display:flex; gap:12px; align-items:flex-start; }
+.small .field { flex:1; min-width:0; }
+
+/* specific insurance row sizing so Member ID and Group# don't overflow */
+.insurance-row .field { flex: 0 0 48%; } /* fitting two smaller fields side-by-side */
+.insurance-row .field input { width:100%; }
+
+/* inline help and button */
+.inline-help { font-size: .9rem; color: var(--muted); margin-top:6px; }
+
+button[type="submit"] {
+  display:inline-block; background:var(--charcoal); color:#fff; padding:12px 18px; border-radius:12px; font-weight:700; border:0; cursor:pointer;
+}
+button[type="submit"]:hover { transform:translateY(-2px); }
+
+.summary { background:linear-gradient(180deg, #fff, #f7fafc); padding:12px; border-radius:10px; border:1px solid rgba(0,0,0,.04); font-size:0.95rem; }
+
+/* instructions after submit (client-facing) */
+#afterSubmit { margin-top:14px; display:none; }
+#afterSubmit .card { padding:14px; }
+.copy-btn { display:inline-block; margin-left:8px; padding:6px 10px; border-radius:8px; background:#efefef; border:1px solid #d0d0d0; cursor:pointer; font-weight:600; }
+
+/* CTA + footer spacing and styles (CTA HTML left the same) */
+.cta-bar{background:linear-gradient(135deg,rgba(169,201,255,0.85),rgba(167,196,160,0.85));color:#0f172a;padding:40px 20px; margin-top:40px;}
+.btn{display:inline-block;background:var(--charcoal);color:#fff;padding:10px 16px;border-radius:12px;font-weight:700;text-decoration:none;}
+
+/* Footer */
+footer { background: #101418; color: #d1d5db; padding-top: 40px; }
+footer a { color: #e5e7eb; }
+.footgrid { display: grid; gap: 20px; grid-template-columns: 2fr 1fr 1fr; }
+.disclaimer { font-size: .85rem; color: #9ca3af; }
+.subtle { font-size: .9rem; color: #cbd5e1; }
+
+/* Mobile nav behavior */
+@media (max-width:840px) {
+  nav[aria-label="Main Navigation"] ul {
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: #fff;
+    overflow: hidden;
+    max-height: 0;
+    flex-direction: column;
+    transition: max-height 0.4s ease;
+  }
+  nav ul.open { max-height: 500px; }
+  nav li { padding: 12px 20px; border-bottom: 1px solid rgba(0,0,0,0.05); opacity: 0; transform: translateX(-20px); }
+  .menu-btn { display: block; }
+}
+</style>
+</head>
+<body>
+
+<!-- === HEADER (exact, word-for-word from your index) === -->
+<header>
+  <div class="container nav">
+    <a class="brand" href="index.html">
+  <img src="Logo.jpg" alt="Miles 2 Wisdom Logo" class="logo">
+  <div>
+    <h1>Miles 2 Wisdom Counseling</h1>
+    <div class="tagline">Guiding You from Where You Are to Where You Want to Be.</div>
+  </div>
+</a>
+    <nav aria-label="Main Navigation">
+      <button class="menu-btn" aria-expanded="false" aria-controls="menu">☰</button>
+      <ul id="menu" role="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="meet-the-team.html">Meet the Team</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="new-patient.html" class="btn">New Patient</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<!-- === end header === -->
+
+<main class="container">
+  <h1 class="page-title">New Patient Intake</h1>
+  <p class="lead">Please complete this form before your first appointment. Fields marked with * are required. After submitting, you'll be able to download a copy of your responses to save or email to the clinic.</p>
+
+  <form id="newPatientForm" class="form-grid" method="post" action="#" novalidate>
+    <!-- LEFT: Large form -->
+    <div class="card">
+      <h2>Personal Information</h2>
+
+      <div class="small">
+        <div class="field">
+          <label for="firstName">First name *</label>
+          <input id="firstName" name="firstName" type="text" required placeholder="e.g. John">
+        </div>
+        <div class="field">
+          <label for="lastName">Last name *</label>
+          <input id="lastName" name="lastName" type="text" required placeholder="e.g. Doe">
+        </div>
+      </div>
+
+      <div class="small" style="margin-top:6px;">
+        <div class="field">
+          <label for="dob">Date of birth *</label>
+          <input id="dob" name="dob" type="date" required>
+        </div>
+        <div class="field">
+          <label for="gender">Gender</label>
+          <select id="gender" name="gender" aria-label="Gender">
+            <option value="">Prefer not to say</option>
+            <option>Female</option>
+            <option>Male</option>
+            <option>Non-binary</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="phone">Phone *</label>
+        <input id="phone" name="phone" type="tel" required placeholder="(###) ###-####">
+      </div>
+
+      <div class="field">
+        <label for="email">Email *</label>
+        <input id="email" name="email" type="email" required placeholder="you@example.com">
+      </div>
+
+      <div class="field">
+        <label for="address">Address</label>
+        <input id="address" name="address" type="text" placeholder="Street, City, State, ZIP">
+      </div>
+
+      <h3 style="margin-top:18px;">Emergency Contact</h3>
+      <div class="small">
+        <div class="field">
+          <label for="emName">Name *</label>
+          <input id="emName" name="emName" type="text" required>
+        </div>
+        <div class="field">
+          <label for="emPhone">Phone *</label>
+          <input id="emPhone" name="emPhone" type="tel" required>
+        </div>
+      </div>
+
+      <h3 style="margin-top:18px;">Why are you seeking services?</h3>
+      <div class="field">
+        <label for="reason">Brief summary *</label>
+        <textarea id="reason" name="reason" required placeholder="What brings you in?"></textarea>
+      </div>
+
+      <h3 style="margin-top:12px;">Current medications & allergies</h3>
+      <div class="field">
+        <label for="meds">Medications / allergies</label>
+        <textarea id="meds" name="meds" placeholder="List medications, dosages, allergies"></textarea>
+      </div>
+
+      <h3 style="margin-top:12px;">Mental health history</h3>
+      <div class="field">
+        <label for="history">Prior diagnoses, therapies, hospitalizations</label>
+        <textarea id="history" name="history" placeholder="Provide any relevant history"></textarea>
+      </div>
+
+      <fieldset style="margin-top:14px; border:0; padding:0;">
+        <legend style="font-weight:700; margin-bottom:8px;">Consent & HIPAA</legend>
+        <div style="margin-bottom:8px; font-size:.95rem; color:var(--muted);">
+          By checking the box below you consent to receive treatment and acknowledge our privacy practices. This is not a legal document—clinic staff will review full consent forms during intake.
+        </div>
+        <label style="display:flex;gap:8px;align-items:center;">
+          <input type="checkbox" name="consent" value="agreed" required>
+          <span>I consent to treatment and have read the clinic information.*</span>
+        </label>
+      </fieldset>
+
+      <div style="margin-top:14px;" class="field">
+        <label for="signature">Type your full name to sign *</label>
+        <input id="signature" name="signature" type="text" placeholder="Full name" required>
+        <div class="inline-help">This typed name serves as an electronic signature for intake.</div>
+      </div>
+
+      <div style="margin-top:10px;">
+        <button type="submit">Download & Save My Form</button>
+        <span id="formMessage" style="margin-left:12px;color:green;font-weight:600;"></span>
+      </div>
+
+      <!-- Client-facing instructions that appear after submit -->
+      <div id="afterSubmit" aria-live="polite">
+        <div class="card">
+          <h3>Next steps — quick (from the patient)</h3>
+          <ol style="margin-left:16px;">
+            <li>Save the downloaded file to your device.</li>
+            <li>Email the saved file to <strong id="clinicEmailText">frontdesk@miles2wisdom.example</strong>
+              <button id="copyEmailBtn" class="copy-btn" type="button">Copy email</button></li>
+            <li>Or bring the file on your first appointment.</li>
+          </ol>
+          <p style="margin-top:8px;font-size:.95rem;color:var(--muted);">Tip: Use the button below to open your mail client with a pre-filled subject. You still need to attach the downloaded file to the message.</p>
+          <div style="margin-top:8px;">
+            <a id="mailtoLink" class="btn" href="#">Open email client</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Sidebar / Insurance & Summary -->
+    <aside class="card">
+      <h3>Insurance / Billing</h3>
+      <div class="field">
+        <label for="insurance">Insurance provider</label>
+        <input id="insurance" name="insurance" type="text" placeholder="e.g. Blue Cross">
+      </div>
+
+      <!-- added class insurance-row so these two fields are sized correctly -->
+      <div class="small insurance-row">
+        <div class="field">
+          <label for="memberId">Member ID</label>
+          <input id="memberId" name="memberId" type="text" placeholder="e.g. 12345678">
+        </div>
+        <div class="field">
+          <label for="group">Group #</label>
+          <input id="group" name="group" type="text" placeholder="e.g. GRP1234">
+        </div>
+      </div>
+
+      <h3 style="margin-top:16px;">Logistics</h3>
+      <div class="field">
+        <label for="preferred">Preferred contact method</label>
+        <select id="preferred" name="preferred">
+          <option>Email</option>
+          <option>Phone</option>
+          <option>Text</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="availability">Best days / times</label>
+        <input id="availability" name="availability" type="text" placeholder="e.g. Weekdays 4pm-7pm">
+      </div>
+
+      <h3 style="margin-top:16px;">Privacy note</h3>
+      <div class="summary">
+        <p style="margin:0 0 8px 0;"><strong>Not a crisis service.</strong> Call 911 or 988 for emergencies.</p>
+        <p style="margin:0; color:var(--muted); font-size:.95rem;">We will contact you using your preferred method to schedule your first appointment. If you want us to communicate via a different method, note it in 'Preferred contact'.</p>
+      </div>
+    </aside>
+  </form>
+</main>
+
+<!-- === CTA BAR (exact, word-for-word from your index) === -->
+<section class="cta-bar">
+    <div style="flex:1;text-align:center;padding:20px;">
+      <h3>Join Us</h3>
+      <p>WE ARE ALWAYS LOOKING FOR INCREDIBLE PEOPLE TO JOIN OUR TEAM!</p>
+      <a href="apply-now.html" class="btn">Apply Now</a>
+    </div>
+  </div>
+</section>
+<!-- === end CTA === -->
+
+<footer>
+  <div class="container footgrid">
+    <div>
+      <strong>Miles 2 Wisdom Counseling Services, LLC</strong>
+      <p class="disclaimer" style="margin-top:6px;color:#9ca3af;">Not a crisis service. Call 911 or 988 in emergencies.</p>
+    </div>
+    <div>
+      <strong>Navigate</strong>
+      <ul style="list-style:none;padding-left:0;margin-top:8px;">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+      </ul>
+    </div>
+    <div>
+      <strong>Connect</strong>
+      <ul style="list-style:none;padding-left:0;margin-top:8px;">
+        <li><a href="https://www.facebook.com/Miles2Wisdom" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="#" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+    <div style="grid-column:1/-1;text-align:center;margin-top:30px;">
+      <img src="Logo.jpg" alt="Miles 2 Wisdom Logo" style="width:80px;opacity:0.8;">
+    </div>
+    <div class="subtle" style="grid-column:1/-1;text-align:center;margin-top:20px;">
+      © <span id="year"></span> Miles 2 Wisdom Counseling Services, LLC.
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile Menu (same behavior as your index)
+const menuBtn = document.querySelector('.menu-btn');
+const menu = document.querySelector('nav ul');
+const links = menu.querySelectorAll('li');
+menuBtn.addEventListener('click', () => {
+  const isOpen = menu.classList.toggle('open');
+  menuBtn.textContent = isOpen ? '✕' : '☰';
+  menuBtn.setAttribute('aria-expanded', isOpen);
+  links.forEach((li, i) => {
+    li.style.transitionDelay = isOpen ? `${i * 50}ms` : '0ms';
+    li.style.opacity = isOpen ? '1' : '0';
+    li.style.transform = isOpen ? 'translateX(0)' : 'translateX(-20px)';
+  });
+});
+
+// Shrink Header Smoothly (same as index)
+const header = document.querySelector('header');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('shrink', window.scrollY > 55);
+});
+
+// Year
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* Form handling: validate + generate downloadable JSON & show next steps */
+document.getElementById('newPatientForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const form = e.target;
+  // simple HTML5 validity check
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+
+  // collect form data
+  const data = {};
+  const fm = new FormData(form);
+  for (const [k,v] of fm.entries()) {
+    data[k] = v;
+  }
+  data.submittedAt = new Date().toISOString();
+
+  // create downloadable JSON file (patient can save & email to clinic)
+  const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const safeName = (data.lastName || 'patient').replace(/\s+/g, '-').toLowerCase();
+  a.href = url;
+  a.download = `miles2wisdom-newpatient-${safeName}.json`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+
+  // show a confirmation message and the after-submit instruction card
+  const msg = document.getElementById('formMessage');
+  msg.textContent = 'Form downloaded — save this file and email it to frontdesk@miles2wisdom.example (or bring it to your first session).';
+
+  // show next-step instructions and set mailto link
+  const after = document.getElementById('afterSubmit');
+  after.style.display = 'block';
+
+  // set clinic email and mailto link (edit clinicEmail to your real email)
+  const clinicEmail = 'frontdesk@miles2wisdom.example';
+  document.getElementById('clinicEmailText').textContent = clinicEmail;
+
+  // create a subject & body template for the user's email (they still must attach the file)
+  const subject = encodeURIComponent(`New Patient Intake — ${data.lastName || ''}, ${data.firstName || ''}`.trim());
+  const body = encodeURIComponent('Hello,\n\nI have attached my completed new patient intake form. Please confirm receipt and next steps.\n\nThanks,\n' + (data.firstName?`${data.firstName} ${data.lastName || ''}`:''));
+  const mailto = `mailto:${clinicEmail}?subject=${subject}&body=${body}`;
+  const mailtoLink = document.getElementById('mailtoLink');
+  mailtoLink.setAttribute('href', mailto);
+
+  // copy-to-clipboard for clinic email
+  document.getElementById('copyEmailBtn').addEventListener('click', () => {
+    navigator.clipboard.writeText(clinicEmail).then(()=> {
+      const btn = document.getElementById('copyEmailBtn');
+      btn.textContent = 'Copied';
+      setTimeout(()=>btn.textContent='Copy email', 1500);
+    });
+  });
+});
+</script>
+</body>
+</html>

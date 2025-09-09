@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Miles 2 Wisdom Counseling Services, LLC</title>
+<meta name="description" content="Guiding you from where you are to where you want to be. Counseling for individuals, couples, and families." />
+<meta property="og:title" content="Miles 2 Wisdom Counseling Services, LLC" />
+<meta property="og:description" content="Guiding you from where you are to where you want to be." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="Logo.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="theme-color" content="#A9C9FF">
+<link rel="preload" as="image" href="image1.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Lora:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --blue:#A9C9FF;
+  --beige:hsl(33,38%,94%);
+  --sage:#A7C4A0;
+  --charcoal:#333;
+  --ink:#1f1f1f;
+  --muted:#6b7280;
+  --white:#fff;
+  --maxw:1100px;
+  --radius:14px;
+  --shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html { scroll-behavior: smooth; }
+body {
+  color: var(--ink);
+  background: linear-gradient(180deg,var(--beige),#fff 45%);
+  font-family: Lato, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height: 1.6;
+}
+a { color: inherit; text-decoration: none; }
+a:focus { outline: 2px solid var(--blue); outline-offset: 2px; }
+.container { max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
+
+/* Header */
+header {
+  position: sticky; top: 0; z-index: 1000;
+  background: rgba(255,255,255,.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0,0,0,.05);
+  padding: 20px 40px;
+  transition: padding 0.3s ease, box-shadow 0.3s ease;
+}
+header.shrink { padding: 10px 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.nav { display: flex; align-items: center; justify-content: space-between; }
+.brand { display: flex; align-items: center; gap: 12px; }
+.logo {
+  width: 60px; height: 60px; border-radius: 50%;
+  object-fit: cover;
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+header.shrink .logo { transform: scale(0.85); }
+.brand h1 {
+  font-family: Lora, serif;
+  font-size: 1.3rem;
+  transition: font-size 0.3s ease;
+}
+header.shrink .brand h1 { font-size: 1.15rem; }
+.tagline { font-size: .8rem; color: var(--muted); }
+
+nav[aria-label="Main Navigation"] ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  transition: all 0.5s ease;
+}
+nav ul li {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+nav a {
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+nav a:hover, nav a:focus {
+  background: rgba(169,201,255,0.25);
+}
+
+.menu-btn {
+  display: none;
+  border: 0;
+  background: var(--charcoal);
+  color: #fff;
+  font-size: 1.5rem;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  overflow: hidden;
+  height: 120vh; /* taller than viewport */
+  margin-top: -65px;
+}
+.slideshow-inner img {
+  width: 100%;
+  height: 120vh; /* match the hero height */
+  object-fit: cover;
+}
+.hero .wrap {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 3; width: 100%;
+  max-width: 650px; padding: 0 20px;
+  text-align: center; color: #fff;
+}
+.hero h2 {
+  font-family: Lora, serif;
+  font-size: clamp(2rem,4vw,3rem);
+  margin-bottom: 12px;
+  text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+}
+.hero p { margin-bottom: 24px; text-shadow: 1px 1px 6px rgba(0,0,0,0.6); }
+.btn {
+  display: inline-block;
+  background: var(--charcoal);
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-weight: 700;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+}
+.btn:hover, .btn:focus { transform: translateY(-2px); }
+.btn.alt { background: var(--sage); color: #0b1a10; }
+
+/* Slideshow */
+.slideshow { position: relative; width: 100%; height: 100%; overflow: hidden; }
+.slideshow-inner img {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0; transition: opacity 1s ease-in-out;
+}
+.slideshow-inner img.active { opacity: 1; z-index: 2; }
+.slideshow-dots {
+  position: absolute; bottom: 15px; width: 100%;
+  text-align: center; z-index: 10;
+}
+.slideshow-dots span {
+  display: inline-block; width: 12px; height: 12px;
+  margin: 0 6px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 50%; cursor: pointer;
+  transition: background 0.3s;
+}
+.slideshow-dots span.active { background: rgba(255,255,255,0.9); }
+
+/* Sections */
+.grid { display: grid; gap: 22px; }
+.two { grid-template-columns: repeat(2,1fr); }
+.three { grid-template-columns: repeat(3,1fr); }
+.card {
+  background: #fff; border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px; border: 1px solid rgba(0,0,0,.05);
+  text-align: center;
+}
+.card h3 { font-family: Lora, serif; margin: 0.2rem 0 0.4rem; }
+section { padding: 64px 0; }
+section h2 { font-family: Lora, serif; font-size: clamp(1.6rem,3vw,2.2rem); margin-bottom: 10px; }
+section .lead { color: #374151; max-width: 800px; }
+
+/* CTA + footer */
+.cta-bar{background:linear-gradient(135deg,rgba(169,201,255,0.85),rgba(167,196,160,0.85));color:#0f172a;padding:40px 20px;}
+.btn{display:inline-block;background:var(--charcoal);color:#fff;padding:10px 16px;border-radius:12px;font-weight:700;text-decoration:none;}
+
+/* Footer */
+footer { background: #101418; color: #d1d5db; padding-top: 40px; }
+footer a { color: #e5e7eb; }
+.footgrid { display: grid; gap: 20px; grid-template-columns: 2fr 1fr 1fr; }
+.disclaimer { font-size: .85rem; color: #9ca3af; }
+.subtle { font-size: .9rem; color: #cbd5e1; }
+
+/* Mobile */
+@media (max-width:840px) {
+  nav[aria-label="Main Navigation"] ul {
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: #fff;
+    overflow: hidden;
+    max-height: 0;
+    flex-direction: column;
+    transition: max-height 0.4s ease;
+  }
+  nav ul.open { max-height: 500px; }
+  nav li { padding: 12px 20px; border-bottom: 1px solid rgba(0,0,0,0.05); opacity: 0; transform: translateX(-20px); }
+  .menu-btn { display: block; }
+  .behavioral-grid { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="index.html">
+  <img src="Logo.jpg" alt="Miles 2 Wisdom Logo" class="logo">
+  <div>
+    <h1>Miles 2 Wisdom Counseling</h1>
+    <div class="tagline">Guiding You from Where You Are to Where You Want to Be.</div>
+  </div>
+</a>
+    <nav aria-label="Main Navigation">
+      <button class="menu-btn" aria-expanded="false" aria-controls="menu">☰</button>
+      <ul id="menu" role="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="meet-the-team.html">Meet the Team</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="new-patient.html" class="btn">New Patient</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section id="home" class="hero">
+  <div class="slideshow">
+    <div class="slideshow-inner">
+      <img src="image1.jpg" alt="Counseling session" class="active" loading="eager">
+      <img src="image2.jpg" alt="Therapist with patient" loading="lazy">
+      <img src="image3.jpg" alt="Comfortable counseling office" loading="lazy">
+    </div>
+    <div class="slideshow-dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+  <div class="container wrap">
+    <h2>Healing is a journey, not a destination.</h2>
+    <p>We offer a safe, non-judgmental space for individuals, couples, and families.</p>
+    <a class="btn" href="new-patient.html">Book a Free Consultation</a>
+  </div>
+</section>
+
+<!-- Behavioral Health -->
+<section id="behavioral">
+  <div class="container behavioral-grid" style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+    <img src="image2.jpg" alt="Therapy session" style="width:550px;height:auto;border-radius:12px;object-fit:cover;">
+    <div class="behavioral-text" style="flex:1;min-width:250px;">
+      <h2>Behavioral Health Services</h2>
+      <p>The Miles 2 Wisdom Institute is a trusted outpatient mental health clinic in North Carolina, serving multiple counties. We offer a full range of specialty behavioral health services provided by a culturally & professionally diverse staff. Evening and weekend hours available. Accepting all insurances and offering discounted rates for uninsured.</p>
+      <div style="margin-top:20px;">
+        <a class="btn" href="new-patient.html">New Patient Intake</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section id="services" style="width:100vw; padding:40px 0; overflow:hidden;">
+  <div class="grid services-grid" style="display:grid; grid-template-columns: repeat(3,1fr); gap:20px;">
+
+    <!-- Team Card -->
+    <div class="card service-card">
+      <img src="photo-filler.jpg" alt="Our team">
+      <a class="btn" href="meet-the-team.html">View Team</a>
+    </div>
+
+    <!-- Services Card -->
+    <div class="card service-card">
+      <img src="photo-filler.jpg" alt="Counseling services">
+      <a class="btn" href="services.html">View Services</a>
+    </div>
+
+    <!-- Shop Card -->
+    <div class="card service-card">
+      <img src="photo-filler.jpg" alt="Shop resources">
+      <a class="btn" href="shop.html">View Shop</a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+/* Service Card Styling */
+.service-card {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  min-height:35vh; /* Desktop height */
+}
+.service-card img {
+  width:80%;
+  height:auto;
+  object-fit:cover;
+  border-radius:12px;
+  margin-bottom:15px;
+}
+
+/* Mobile adjustments */
+@media (max-width:840px) {
+  .services-grid {
+    grid-template-columns: 1fr !important;
+    gap:15px;
+  }
+  .service-card {
+    min-height:20vh; /* smaller on mobile */
+    padding:10px 0;
+  }
+  .service-card img {
+    width:90%;
+  }
+}
+</style>
+
+
+
+
+<!-- CTA Bar -->
+<section class="cta-bar">
+  <div class="container" style="display:flex;gap:0;align-items:stretch;flex-wrap:wrap;">
+    <div style="flex:1;text-align:center;padding:20px;">
+      <h3>New Patients</h3>
+      <p>CALL US AT <strong>910.860.7008 EXT 102</strong> OR FILL OUT A NEW PATIENT FORM.</p>
+      <a href="new-patient.html" class="btn">New Patient Form</a>
+    </div>
+    <div style="width:1px;background:rgba(0,0,0,0.3);"></div>
+    <div style="flex:1;text-align:center;padding:20px;">
+      <h3>Join Us</h3>
+      <p>WE ARE ALWAYS LOOKING FOR INCREDIBLE PEOPLE TO JOIN OUR TEAM!</p>
+      <a href="apply-now.html" class="btn">Apply Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container footgrid">
+    <div>
+      <strong>Miles 2 Wisdom Counseling Services, LLC</strong>
+      <p class="disclaimer">Not a crisis service. Call 911 or 988 in emergencies.</p>
+    </div>
+    <div>
+      <strong>Navigate</strong>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+      </ul>
+    </div>
+    <div>
+      <strong>Connect</strong>
+      <ul>
+        <li><a href="https://www.facebook.com/Miles2Wisdom" target="_blank">Facebook</a></li>
+        <li><a href="#">LinkedIn</a></li>
+      </ul>
+    </div>
+    <div style="grid-column:1/-1;text-align:center;margin-top:30px;">
+      <img src="Logo.jpg" alt="Miles 2 Wisdom Logo" style="width:80px;opacity:0.8;">
+    </div>
+    <div class="subtle" style="grid-column:1/-1;text-align:center;margin-top:20px;">
+      © <span id="year"></span> Miles 2 Wisdom Counseling Services, LLC.
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile Menu
+const menuBtn = document.querySelector('.menu-btn');
+const menu = document.querySelector('nav ul');
+const links = menu.querySelectorAll('li');
+menuBtn.addEventListener('click', () => {
+  const isOpen = menu.classList.toggle('open');
+  menuBtn.textContent = isOpen ? '✕' : '☰';
+  menuBtn.setAttribute('aria-expanded', isOpen);
+  links.forEach((li, i) => {
+    li.style.transitionDelay = isOpen ? `${i * 50}ms` : '0ms';
+    li.style.opacity = isOpen ? '1' : '0';
+    li.style.transform = isOpen ? 'translateX(0)' : 'translateX(-20px)';
+  });
+});
+
+// Shrink Header Smoothly
+const header = document.querySelector('header');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('shrink', window.scrollY > 55);
+});
+
+// Slideshow
+const slides = document.querySelectorAll('.slideshow-inner img');
+const dots = document.querySelectorAll('.slideshow-dots .dot');
+let currentSlide = 0;
+let interval;
+const delay = 15000;
+
+function showSlide(index) {
+  slides.forEach((img,i) => {
+    img.classList.toggle('active', i === index);
+    dots[i].classList.toggle('active', i === index);
+  });
+  currentSlide = index;
+}
+function nextSlide() { showSlide((currentSlide + 1) % slides.length); }
+function startSlideshow() { interval = setInterval(nextSlide, delay); }
+function pauseSlideshow() { clearInterval(interval); }
+
+dots.forEach((dot, i) => {
+  dot.addEventListener('click', () => {
+    pauseSlideshow();
+    showSlide(i);
+    startSlideshow();
+  });
+});
+const slideshow = document.querySelector('.slideshow');
+slideshow.addEventListener('mouseenter', pauseSlideshow);
+slideshow.addEventListener('mouseleave', startSlideshow);
+
+showSlide(currentSlide);
+startSlideshow();
+
+// Year
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Services — Miles 2 Wisdom Counseling Services, LLC</title>
+<meta name="description" content="Individual, couples, family, group therapy, psychiatric services, and supervised intern services." />
+<meta property="og:title" content="Miles 2 Wisdom Counseling Services, LLC" />
+<meta property="og:description" content="Guiding you from where you are to where you want to be." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="Logo.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="theme-color" content="#A9C9FF">
+<link rel="preload" as="image" href="image1.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Lora:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --blue:#A9C9FF;
+  --beige:hsl(33,38%,94%);
+  --sage:#A7C4A0;
+  --charcoal:#333;
+  --ink:#1f1f1f;
+  --muted:#6b7280;
+  --white:#fff;
+  --maxw:1100px;
+  --radius:14px;
+  --shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+/* base reset and container */
+* { box-sizing: border-box; margin:0; padding:0; }
+html { scroll-behavior: smooth; }
+body {
+  color: var(--ink);
+  background: linear-gradient(180deg,var(--beige),#fff 45%);
+  font-family: Lato, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height: 1.6;
+}
+a { color: inherit; text-decoration: none; }
+.container { max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
+
+/* Header (exact styles from index) */
+header {
+  position: sticky; top: 0; z-index: 1000;
+  background: rgba(255,255,255,.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0,0,0,.05);
+  padding: 20px 40px;
+  transition: padding 0.3s ease, box-shadow 0.3s ease;
+}
+header.shrink { padding: 10px 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.nav { display: flex; align-items: center; justify-content: space-between; }
+.brand { display: flex; align-items: center; gap: 12px; }
+.logo {
+  width: 60px; height: 60px; border-radius: 50%;
+  object-fit: cover;
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+header.shrink .logo { transform: scale(0.85); }
+.brand h1 {
+  font-family: Lora, serif;
+  font-size: 1.3rem;
+  transition: font-size 0.3s ease;
+  font-weight:700;
+}
+header.shrink .brand h1 { font-size: 1.15rem; }
+.tagline { font-size: .8rem; color: var(--muted); }
+
+/* Navigation */
+nav[aria-label="Main Navigation"] ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  transition: all 0.5s ease;
+}
+nav ul li {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+nav a {
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  height: 40px;
+
+}
+a:focus,
+button:focus {
+  outline: 2px solid rgba(169,201,255,0.8); /* light blue */
+  outline-offset: 2px;
+}
+.menu-btn {
+  display: none;
+  border: 0;
+  background: var(--charcoal);
+  color: #fff;
+  font-size: 1.5rem;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* page header / intro */
+.page-hero { padding: 56px 0 18px 0; text-align:left; }
+.page-hero h1 { font-family: Lora, serif; font-size: 2rem; margin-bottom:8px; }
+.page-hero .lead { color:#374151; max-width:900px; margin-bottom:10px; }
+
+/* layout */
+.sections { display: grid; gap: 34px; padding: 20px 0 0 0; }
+.grid-3 { display:grid; grid-template-columns: repeat(3, 1fr); gap:20px; }
+@media (max-width:980px){ .grid-3 { grid-template-columns: repeat(2,1fr); } }
+@media (max-width:640px){ .grid-3 { grid-template-columns: 1fr; } }
+
+/* cards */
+.card {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(.2,.9,.2,1);
+}
+.card.visible { opacity:1; transform: translateY(0); }
+.card h3 { font-family: Lora, serif; margin:0 0 8px 0; }
+.card p { color:#374151; margin:0 0 10px 0; }
+.card ul { margin-left:16px; color:#374151; }
+
+/* interns banner */
+.interns {
+  border-radius: var(--radius);
+  padding: 18px;
+  background: linear-gradient(135deg, rgba(169,201,255,0.12), rgba(167,196,160,0.06));
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+/* faq / details */
+.faq { display:grid; gap:12px; }
+.faq summary { font-weight:700; cursor:pointer; padding:10px; background:#fff; border-radius:8px; border:1px solid rgba(0,0,0,0.04); }
+.faq details[open] summary { background:linear-gradient(90deg, rgba(169,201,255,0.12), rgba(167,196,160,0.06)); }
+
+/* CTA + footer (exact CTA HTML below) */
+.cta-bar{background:linear-gradient(135deg,rgba(169,201,255,0.85),rgba(167,196,160,0.85));color:#0f172a;padding:40px 20px;margin-top:36px;}
+.btn{display:inline-block;background:var(--charcoal);color:#fff;padding:10px 16px;border-radius:12px;font-weight:700;text-decoration:none;}
+
+/* footer */
+footer { background: #101418; color: #d1d5db; padding-top: 40px; text-align:center; }
+.footgrid{display:grid; gap:20px; grid-template-columns:2fr 1fr 1fr; max-width:var(--maxw); margin:0 auto; padding:20px;}
+.subtle { font-size:.9rem; color:#cbd5e1; }
+
+/* mobile nav adjustments */
+@media (max-width:840px) {
+  nav[aria-label="Main Navigation"] ul {
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: #fff;
+    overflow: hidden;
+    max-height: 0;
+    flex-direction: column;
+    transition: max-height 0.4s ease;
+  }
+  nav ul.open { max-height: 500px; }
+  nav li { padding: 12px 20px; border-bottom: 1px solid rgba(0,0,0,0.05); opacity: 0; transform: translateX(-20px); }
+  .menu-btn { display: block; }
+}
+</style>
+</head>
+<body>
+
+<!-- === HEADER (exact, word-for-word from your index) === -->
+<header>
+  <div class="container nav">
+    <a class="brand" href="index.html">
+  <img src="Logo.jpg" alt="Miles 2 Wisdom Logo" class="logo">
+  <div>
+    <h1>Miles 2 Wisdom Counseling</h1>
+    <div class="tagline">Guiding You from Where You Are to Where You Want to Be.</div>
+  </div>
+</a>
+    <nav aria-label="Main Navigation">
+      <button class="menu-btn" aria-expanded="false" aria-controls="menu">☰</button>
+      <ul id="menu" role="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="meet-the-team.html">Meet the Team</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="new-patient.html" class="btn">New Patient</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<!-- === end header === -->
+
+<main class="container">
+  <section class="page-hero">
+    <h1>Services</h1>
+    <p class="lead">We offer a range of behavioral health services — individual, couples, family, groups, psychiatric evaluation, and supervised intern services. Evening and weekend appointments are available.</p>
+  </section>
+
+  <section class="sections">
+
+    <!-- Core services -->
+    <div class="card">
+      <h2 style="margin-top:0">Core Clinical Services</h2>
+      <div class="grid-3" style="margin-top:12px;">
+        <div class="card">
+          <h3>Individual Therapy</h3>
+          <p>Evidence-based approaches including CBT, ACT, and trauma-informed care tailored to each client.</p>
+        </div>
+        <div class="card">
+          <h3>Couples & Relationship Therapy</h3>
+          <p>Communication-focused work that helps partners rebuild trust, improve connection, and solve ongoing conflicts.</p>
+        </div>
+        <div class="card">
+          <h3>Family Therapy</h3>
+          <p>Systems-based approaches to strengthen family communication and address presenting concerns with all members involved.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Specialty services -->
+    <div class="card">
+      <h2>Specialty & Supportive Services</h2>
+      <div class="grid-3" style="margin-top:12px;">
+        <div class="card">
+          <h3>Child & Adolescent Therapy</h3>
+          <p>Play-based, family-inclusive therapy for children and teens.</p>
+        </div>
+        <div class="card">
+          <h3>Group Therapy & Workshops</h3>
+          <p>Structured groups for skills-building (anxiety, DBT-skills, parenting), and periodic workshops.</p>
+        </div>
+        <div class="card">
+          <h3>Psychiatric Evaluation</h3>
+          <p>Medication evaluation and coordination with prescribing providers when clinically appropriate.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interns -->
+    <div class="card interns">
+      <h2>Intern Services (Supervised)</h2>
+      <p>Our clinic hosts practicum and internship students from accredited programs. These clinicians see clients as part of their supervised training. If you choose intern services, you receive quality care at a reduced rate while helping train the next generation of clinicians.</p>
+
+      <h3 style="margin-top:12px;">How Intern Services Work</h3>
+      <ul>
+        <li><strong>Supervision:</strong> All interns are supervised by licensed clinicians who review cases, co-sign notes, and provide oversight.</li>
+        <li><strong>Cost:</strong> Intern sessions are typically offered at a reduced fee compared with fully licensed providers.</li>
+        <li><strong>Matching:</strong> After intake, we match clients to interns based on clinical needs, availability, and language/cultural preferences.</li>
+        <li><strong>Transition:</strong> If a client requires ongoing, specialized, or medication management care, we discuss options to transition to a licensed clinician.</li>
+        <li><strong>Confidentiality:</strong> Interns follow the same privacy and HIPAA rules as staff; supervision is part of the clinical process and is protected.</li>
+      </ul>
+
+      <div style="margin-top:12px;">
+        <a class="btn" href="new-patient.html">Start New Patient Intake</a>
+        <a class="btn alt" href="meet-the-team.html" style="margin-left:10px;">Meet Our Supervisors</a>
+      </div>
+    </div>
+
+    <!-- Process & outcomes -->
+    <div class="card">
+      <h2>Intake & Treatment Process</h2>
+      <p>Our intake process is designed to be welcoming and efficient. Typical steps:</p>
+      <ul>
+        <li>Initial contact & scheduling of an intake appointment.</li>
+        <li>Comprehensive intake assessment (clinical history, strengths, and goals).</li>
+        <li>Treatment planning with measurable goals and a recommended cadence.</li>
+        <li>Ongoing review of progress, outcomes tracking, and coordination with other providers when needed.</li>
+      </ul>
+    </div>
+
+    <!-- FAQ -->
+    <div class="card">
+      <h2>FAQs</h2>
+      <div class="faq">
+        <details>
+          <summary>Do you accept insurance?</summary>
+          <div style="padding:12px 8px;color:#374151">Yes — we accept many major insurers and offer a sliding scale for uninsured clients. Insurance specifics are confirmed during intake.</div>
+        </details>
+
+        <details>
+          <summary>Are sessions available virtually?</summary>
+          <div style="padding:12px 8px;color:#374151">Yes — we offer telehealth sessions for many service types depending on client needs and provider licensing.</div>
+        </details>
+
+        <details>
+          <summary>How do you assign interns?</summary>
+          <div style="padding:12px 8px;color:#374151">After intake we consider client goals, language, availability, and intern training focus to find the best match. Supervisors remain engaged in the care plan.</div>
+        </details>
+
+        <details>
+          <summary>What if I need medication?</summary>
+          <div style="padding:12px 8px;color:#374151">We can provide psychiatric evaluations and coordinate with prescribing providers. If long-term medication management is needed, we will discuss appropriate referrals.</div>
+        </details>
+      </div>
+    </div>
+
+    <!-- Outcomes & measurement -->
+    <div class="card">
+      <h2>Outcomes & Measurement</h2>
+      <p>We use standardized measures and client-reported outcomes to track progress and adjust treatment plans. Your clinician will discuss how progress is measured and celebrated.</p>
+    </div>
+
+  </section>
+</main>
+
+<!-- === CTA BAR (exact, word-for-word from your index) === -->
+<section class="cta-bar">
+  <div class="container" style="display:flex;gap:0;align-items:stretch;flex-wrap:wrap;">
+    <div style="flex:1;text-align:center;padding:20px;">
+      <h3>New Patients</h3>
+      <p>CALL US AT <strong>910.860.7008 EXT 102</strong> OR FILL OUT A NEW PATIENT FORM.</p>
+      <a href="new-patient.html" class="btn">New Patient Form</a>
+    </div>
+    <div style="width:1px;background:rgba(0,0,0,0.3);"></div>
+    <div style="flex:1;text-align:center;padding:20px;">
+      <h3>Join Us</h3>
+      <p>WE ARE ALWAYS LOOKING FOR INCREDIBLE PEOPLE TO JOIN OUR TEAM!</p>
+      <a href="apply-now.html" class="btn">Apply Now</a>
+    </div>
+  </div>
+</section>
+<!-- === end CTA === -->
+
+<footer>
+  <div class="container footgrid">
+    <div>
+      <strong>Miles 2 Wisdom Counseling Services, LLC</strong>
+      <p class="disclaimer" style="margin-top:6px;color:#9ca3af;">Not a crisis service. Call 911 or 988 in emergencies.</p>
+    </div>
+    <div>
+      <strong>Navigate</strong>
+      <ul style="list-style:none;padding-left:0;margin-top:8px;">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="meet-the-team.html">Team</a></li>
+      </ul>
+    </div>
+    <div>
+      <strong>Connect</strong>
+      <ul style="list-style:none;padding-left:0;margin-top:8px;">
+        <li><a href="https://www.facebook.com/Miles2Wisdom" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="#" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+
+    <div style="grid-column:1/-1;text-align:center;margin-top:30px;">
+      <img src="Logo.jpg" alt="Miles 2 Wisdom Logo" style="width:80px;opacity:0.8;">
+    </div>
+
+    <div class="subtle" style="grid-column:1/-1;text-align:center;margin-top:20px;">
+      © <span id="year"></span> Miles 2 Wisdom Counseling Services, LLC.
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile Menu (exact behavior as index)
+const menuBtn = document.querySelector('.menu-btn');
+const menu = document.querySelector('nav ul');
+const links = menu.querySelectorAll('li');
+menuBtn.addEventListener('click', () => {
+  const isOpen = menu.classList.toggle('open');
+  menuBtn.textContent = isOpen ? '✕' : '☰';
+  menuBtn.setAttribute('aria-expanded', isOpen);
+  links.forEach((li, i) => {
+    li.style.transitionDelay = isOpen ? `${i * 50}ms` : '0ms';
+    li.style.opacity = isOpen ? '1' : '0';
+    li.style.transform = isOpen ? 'translateX(0)' : 'translateX(-20px)';
+  });
+});
+
+// Shrink Header Smoothly (exact behavior)
+const header = document.querySelector('header');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('shrink', window.scrollY > 55);
+});
+
+// Year
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Scroll reveal for cards
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.card').forEach(c => observer.observe(c));
+</script>
+</body>
+</html>
